@@ -1,5 +1,8 @@
 # Spring Boot APP with Kubernetes
 
+## Stack
+- 'dive' Analyze Docker image https://github.com/wagoodman/dive
+
 ## Build and run the project
 `
 $ ./gradlew build && java -jar build/libs/hello-kubernetes-1.0-SNAPSHOT.jar

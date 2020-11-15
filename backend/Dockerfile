@@ -3,6 +3,7 @@ FROM adoptopenjdk/openjdk11:jdk-11.0.9_11-alpine AS builder
 
 WORKDIR /app/temp
 
+# Copy all files to WORKDIR
 COPY . .
 # Build project
 RUN ./gradlew build
