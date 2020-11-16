@@ -4,14 +4,28 @@
 
 A simplified microservice architecture that can help to understand microservice architecture and extent with new technologies. In this project is applied maximal closeness to a real system.
 
-### Run Gateway microservice
+### Run microservices
 
-`java -jar build/libs/gateway-1.0-SNAPSHOT.jar`
+#### Run Gateway microservice
 
-### Run Hello-Kubernetes microservice
+`java -jar build/libs/hello-kubernetes-gateway-1.0-SNAPSHOT.jar`
 
-`java -jar -Dserver.port=8082 build/libs/hello-kubernetes-1.0-SNAPSHOT.jar `
+#### Run Backend microservice
 
-### Verify communication between Hello-Kubernetes and Gateway microservices
+`java -jar -Dserver.port=8081 build/libs/hello-kubernetes-backend-1.0-SNAPSHOT.jar `
+
+#### Verify communication between Hello-Kubernetes and Gateway microservices
 
 `curl localhost:8080`
+
+### Run dockerfiles
+
+- First build docker images
+- Create docker network
+  `$ docker network create hello-kubernetes-network`
+- Run backend APP
+  `docker run -d -i -t --name hello-kubernetes-backend --network hello-kubernetes-network al3x3i/hello-kubernetes-backend`
+- Run gateway APP
+  `$ docker run -dit -p 80:8080 --env gateway.secret=hello-kubernetes-secret --env BACKEND_URL=http://hello-kubernetes-backend:8080/ --name hello-kubernetes-gateway --network hello-kubernetes-network al3x3i/hello-kubernetes-gateway`
+- Test
+  `$ curl localhost`
