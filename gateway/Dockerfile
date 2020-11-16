@@ -26,6 +26,6 @@ COPY --from=builder ${DEPENDENCY}/META-INF /app/META-INF
 # application
 COPY --from=builder ${DEPENDENCY}/BOOT-INF/classes /app/BOOT-INF/classes
 
-EXPOSE 8081
+EXPOSE 8080
 
 ENTRYPOINT ["java","-cp","/app","org.springframework.boot.loader.JarLauncher"]

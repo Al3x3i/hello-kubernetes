@@ -3,6 +3,12 @@
 ## Stack
 - 'dive' Analyze Docker image https://github.com/wagoodman/dive
 
+## Run Backend service
+`
+$ ./gradlew build
+$ java -Dserver.port=8081 -jar build/libs/hello-kubernetes-1.0-SNAPSHOT.jar
+`
+
 ## Build and run the project
 `
 $ ./gradlew build && java -jar build/libs/hello-kubernetes-1.0-SNAPSHOT.jar
@@ -14,11 +20,11 @@ $ docker build -t al3x3i/hello-kubernetes .
 `
 ### After Dockerfile build, it can be launched by
 `
-$ docker run -p 8080:8080 al3x3i/hello-kubernetes
+$ docker run -p 8081:8081 al3x3i/hello-kubernetes
 `
 ### Check docker image in shell
 `
-$ ddocker run -p 8080:8080 -it al3x3i/hello-kubernetes sh
+$ ddocker run -p 8081:8081 -it al3x3i/hello-kubernetes sh
 `
 ### Stop all docker containers
 `
@@ -26,7 +32,7 @@ $ docker stop $(docker ps -q)
 `
 ### Check App index endpoint
 `
-$ curl localhost:8080
+$ curl localhost:8081
 `
 ### Upload Docker image to Docker Hub
 ```
