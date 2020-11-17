@@ -5,16 +5,17 @@ metadata:
   name: hello-kubernetes-urls-config
 data:
   BACKEND_URL: "http://backend:8080/"
+  GATEWAY_SECRET: "hello-kubernetes-secret"
 
 # Secret
 ---
 apiVersion: v1
 kind: Secret
 metadata:
-  name: msvc-secret
+  name: my-secret
 type: Opaque
 stringData:
-  secret: secret
+  secret: my-t0p-Secret
 
 # Service backend
 ---
@@ -131,7 +132,7 @@ spec:
             - name: SECRET
               valueFrom:
                 secretKeyRef:
-                  name: msvc-secret
+                  name: my-secret
                   key: secret
           readinessProbe:
             httpGet:
