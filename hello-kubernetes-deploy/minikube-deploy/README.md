@@ -34,7 +34,7 @@
 
 `firefox $(minikube service gateway --url -n hello-kubernetes-ns)`
 
-## Restart all pods with 2 replicas
+## 7.Restart all pods with 2 replicas
 
 ```
 kubectl get deployments
@@ -47,8 +47,15 @@ kubectl get pods -w;
 
 ```
 
-## Test kubernetes pod requests
+## 8.Test kubernetes pod requests
 
 ```
 for i in`seq 50`; do curl $(minikube service gateway --url -n hello-kubernetes-ns) && echo; done
 ```
+
+# Kubectl hints/commands
+
+1. List a particular deployment
+   `kubectl get deployments`
+2. Edit deployoment
+   `kubectl edit deployment backend`
