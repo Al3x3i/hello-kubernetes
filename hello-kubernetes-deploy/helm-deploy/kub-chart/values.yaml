@@ -15,7 +15,7 @@ backend:
     name:
     port: 8080
   image:
-    name: anshelen/microservices-backend
+    name: al3x3i/hello-kubernetes-backend
     tag: latest
     pullPolicy: IfNotPresent
   hpa:
@@ -44,7 +44,7 @@ gateway:
     #   Can be one of ClusterIP, NodePort or LoadBalancer
     type: LoadBalancer
   image:
-    name: anshelen/microservices-gateway
+    name: al3x3i/hello-kubernetes-gateway
     tag: latest
     pullPolicy: IfNotPresent
   hpa:
