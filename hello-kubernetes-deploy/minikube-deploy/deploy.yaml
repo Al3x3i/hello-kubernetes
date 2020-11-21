@@ -61,7 +61,7 @@ metadata:
     tier: backend
     app: microservices
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       tier: backend
@@ -108,7 +108,7 @@ metadata:
     tier: gateway
     app: microservices
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       tier: gateway
