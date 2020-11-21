@@ -49,4 +49,6 @@ kubectl get pods -w;
 
 ## Test kubernetes pod requests
 
-`for i in`seq 50`; do curl $(minikube service gateway --url -n hello-kubernetes-ns) && echo; done`
+```
+for i in`seq 50`; do curl $(minikube service gateway --url -n hello-kubernetes-ns) && echo; done
+```
