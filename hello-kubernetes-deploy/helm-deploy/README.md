@@ -20,6 +20,22 @@ minikube start --kubernetes-version=1.15.4
 `helm install --dry-run --debug <name> <chart-folder>`
 `helm install --dry-run --debug --name test-kub-chart kub-chart`
 
+### Install
+
+`helm install --name kub-chart-name kub-chart`
+
+### Check status
+
+```
+kubectl get pods
+```
+
+### Delete chart
+
+`helm delete kub-chart-name`
+OR
+`helm del --purge kub-chart-name`
+
 # Create Helm (Can be skipped it is already created)
 
 `helm create kub-chart`
