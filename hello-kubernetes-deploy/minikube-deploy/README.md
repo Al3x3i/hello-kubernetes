@@ -6,7 +6,7 @@
 
 `minikube start`
 
-### 1.1Open minikube dashboard
+### 1.1.Open minikube dashboard
 
 `minikube dashboard`
 

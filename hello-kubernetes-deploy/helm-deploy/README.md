@@ -25,7 +25,7 @@ minikube start --kubernetes-version=1.15.4
 
 ### Install
 
-`helm install --name kub-chart-name kub-chart`
+`helm install --name kub-chart-name ./kub-chart`
 
 ### Check status
 
@@ -50,3 +50,54 @@ OR
 `helm del --purge kub-chart-name`
 
 ## Distributing Charts
+
+1. Create repository al3x3i.github.io.git
+
+2. Create `doc` folder and copy `kub-chart` folder to the `al3x3i.github.io.git` repository
+
+3. Create Helm Package
+
+`helm package kub-chart/ -d docs/`
+
+3.1. Create index.yaml for our chart repo:
+
+`helm repo index docs/ --url https://al3x3i.github.io/docs`
+
+4. Push this to repo: al3x3i.github.io ("Your GitHub Pages" is `\`, this is why is required to provide `docs` in URL path)
+
+5. Add helm repo to your repositories
+
+`helm repo add kub-chart-repo https://al3x3i.github.io/docs`
+
+6. Update helm repos
+
+`helm repo update`
+
+6.1. Optional, use only for testing purposes
+
+```
+kubectl create clusterrolebinding serviceaccounts-cluster-admin \
+ --clusterrole=cluster-admin \
+ --group=system:serviceaccounts
+```
+
+7. Install helm repo by passing custom settings
+
+helm install --name hello-kubernetes-project kub-chart-repo/kub-chart \
+--set backend.container.resources.requests.cpu=50m \
+--set backend.hpa.enabled=true \
+--set gateway.container.resources.requests.cpu=50m \
+--set gateway.hpa.enabled=true \
+--set secrets.secret=secret
+
+8. Test installation
+
+`minikube serive gateway-hello-kubernetes-project`
+
+9. Clean install
+
+```
+helm repo remove kub-chart-repo
+helm del --purge hello-kubernetes-project
+
+```
