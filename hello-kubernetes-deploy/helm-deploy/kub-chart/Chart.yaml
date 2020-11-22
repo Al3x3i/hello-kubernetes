@@ -1,5 +1,14 @@
 apiVersion: v1
-appVersion: "1.0"
-description: A Helm chart for Kubernetes
-name: kub-chart
-version: 0.1.0
+name: kube-chart
+version: 1.0.0
+description: Microservices project
+type: application
+sources:
+  - https://github.com/Al3x3i/hello-kubernetes/hello-kubernetes-backend
+  - https://github.com/Al3x3i/hello-kubernetes/hello-kubernetes-gateway
+maintainers:
+  - name: Aleksei Shashin
+    email:
+    url:
+
+appVersion: 1.0.0
