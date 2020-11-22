@@ -10,8 +10,11 @@ minikube dashboard
 ```
 minikube delete
 minikube start --kubernetes-version=1.15.4
-
 ```
+
+### Create Helm (Can be skipped it is already created)
+
+`helm create kub-chart`
 
 ## Helm install
 
@@ -27,8 +30,18 @@ minikube start --kubernetes-version=1.15.4
 ### Check status
 
 ```
-kubectl get pods
+kubectl get pods -w
+helm ls --all
+
+kubectl get service <service_name>  # Like gateway-kub-chart-name
+minikube service gateway-kub-chart-name --url
+curl $(minikube service gateway-kub-chart-name --url)
+
 ```
+
+### Enjoy watching the work of different pods
+
+`for i in `seq 50`; do curl $(minikube service gateway-kub-chart-name --url) && echo; done`
 
 ### Delete chart
 
@@ -36,6 +49,4 @@ kubectl get pods
 OR
 `helm del --purge kub-chart-name`
 
-# Create Helm (Can be skipped it is already created)
-
-`helm create kub-chart`
+## Distributing Charts
