@@ -59,3 +59,15 @@ for i in`seq 50`; do curl $(minikube service gateway --url -n hello-kubernetes-n
    `kubectl get deployments`
 2. Edit deployoment
    `kubectl edit deployment backend`
+3. Watch pods status
+   `watch -n 1 kubectl get pods`
+4. Get secret
+   ```
+      DEP= -- ENTER YOUR DEPLOYMENT NAME, Like: юнити-коннектор
+      SECRET_NAME=-- ENTER YOUR SECRET NAME, Like: юнити-коннектор-секрет
+      kubectl describe deployments.apps $DEP
+      kubectl get secrets $SECRET_NAME -o yaml
+      echo -n M111111111= | base64 -d
+      
+      echo M111111111= | base64
+   ```
