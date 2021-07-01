@@ -1,0 +1,10 @@
+#server:
+#  port: 8085
+
+#management:
+#  server:
+#    port: 8081
+#
+#  endpoints:
+#    web:
+#      base-path: '/manage'
